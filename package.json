@@ -9,6 +9,7 @@
     "start": "node server/server",
     "server": "nodemon server/server",
     "client": "npm start --prefix client",
+    "build": "npm run build --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "data:import": "node server/seeder",
     "data:destroy": "node server/seeder -d"
