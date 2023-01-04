@@ -1,7 +1,8 @@
 const products = [
   {
+    
     name: 'Airpods Wireless Bluetooth Headphones',
-    image: '/uploads/images/airpods.jpg',
+    image: 'https://firebasestorage.googleapis.com/v0/b/techshop-10c2d.appspot.com/o/image%2Fairpods.jpg?alt=media&token=a1022f94-fce4-42a7-8348-abc2287f4e8d',
     description:
       'Bluetooth technology lets you connect it with compatible devices wirelessly High-quality AAC audio offers immersive listening experience Built-in microphone allows you to take calls while working',
     brand: 'Apple',
@@ -12,8 +13,9 @@ const products = [
     numReviews: 12,
   },
   {
+    
     name: 'iPhone 11 Pro 256GB Memory',
-    image: '/uploads/images/phone.jpg',
+    image: 'https://firebasestorage.googleapis.com/v0/b/techshop-10c2d.appspot.com/o/image%2Fphone.jpg?alt=media&token=a1022f94-fce4-42a7-8348-abc2287f4e8d',
     description:
       'Introducing the iPhone 11 Pro. A transformative triple-camera system that adds tons of capability without complexity. An unprecedented leap in battery life',
     brand: 'Apple',
@@ -25,7 +27,7 @@ const products = [
   },
   {
     name: 'Cannon EOS 80D DSLR Camera',
-    image: '/uploads/images/camera.jpg',
+    image: 'https://firebasestorage.googleapis.com/v0/b/techshop-10c2d.appspot.com/o/image%2Fcamera.jpg?alt=media&token=a1022f94-fce4-42a7-8348-abc2287f4e8d',
     description:
       'Characterized by versatile imaging specs, the Canon EOS 80D further clarifies itself using a pair of robust focusing systems and an intuitive design',
     brand: 'Cannon',
@@ -37,7 +39,7 @@ const products = [
   },
   {
     name: 'Sony Playstation 4 Pro White Version',
-    image: '/uploads/images/playstation.jpg',
+    image: 'https://firebasestorage.googleapis.com/v0/b/techshop-10c2d.appspot.com/o/image%2Fplaystation.jpg?alt=media&token=a1022f94-fce4-42a7-8348-abc2287f4e8d',
     description:
       'The ultimate home entertainment center starts with PlayStation. Whether you are into gaming, HD movies, television, music',
     brand: 'Sony',
@@ -49,7 +51,7 @@ const products = [
   },
   {
     name: 'Logitech G-Series Gaming Mouse',
-    image: '/uploads/images/mouse.jpg',
+    image: 'https://firebasestorage.googleapis.com/v0/b/techshop-10c2d.appspot.com/o/image%2Fmouse.jpg?alt=media&token=a1022f94-fce4-42a7-8348-abc2287f4e8d',
     description:
       'Get a better handle on your games with this Logitech LIGHTSYNC gaming mouse. The six programmable buttons allow customization for a smooth playing experience',
     brand: 'Logitech',
@@ -61,7 +63,7 @@ const products = [
   },
   {
     name: 'Amazon Echo Dot 3rd Generation',
-    image: '/uploads/images/alexa.jpg',
+    image: 'https://firebasestorage.googleapis.com/v0/b/techshop-10c2d.appspot.com/o/image%2Falexa.jpg?alt=media&token=a1022f94-fce4-42a7-8348-abc2287f4e8d',
     description:
       'Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space',
     brand: 'Amazon',

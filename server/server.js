@@ -11,6 +11,8 @@ import cors from 'cors'
 import helmet from "helmet";
 import xss from 'xss-clean'
 import ExpressMongoSanitize from "express-mongo-sanitize";
+import fileupload from 'express-fileupload'
+
 
 //import routers
 import productRouter from "./routes/product.router.js";
@@ -29,6 +31,7 @@ const limiter = rateLimit({
 });
 
 //regular middlewares
+app.use(fileupload())
 app.use(express.json());
 app.use(xss());
 app.use(hpp());
@@ -72,3 +75,4 @@ app.use(errorHandler);
 //start server
 const port = process.env.PORT || 5000;
 app.listen(port, console.log(`Server running in ${process.env.NODE_ENV} mode on port ${port}`.yellow.bold));
+

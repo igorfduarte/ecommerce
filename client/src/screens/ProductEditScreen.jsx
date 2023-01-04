@@ -8,6 +8,8 @@ import Loader from "../components/Loader";
 import { listProductDetails, updateProduct } from "../actions/productActions";
 import FormContainer from "../components/FormContainer";
 import { PRODUCT_UPDATE_RESET } from "../constants/productConstants";
+import { storage } from "../firebase";
+import { getMetadata, getStorage, ref, uploadBytesResumable } from "firebase/storage";
 
 const ProductEditScreen = () => {
   const productDetails = useSelector((state) => state.productDetails);
@@ -65,27 +67,33 @@ const ProductEditScreen = () => {
   };
 
   const uploadFileHandler = async (e) => {
-    const file = e.target.files[0]
-    const formData = new FormData()
-    formData.append('image', file)
-    setUploading(true)
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("image", file);
+    setUploading(true);
 
     try {
-      const config = {
-        headers: {
-          'Content-Type': 'multipart/form-data',
+      const imagesRef = ref(storage, `image/${file.name}`);
+
+      const uploadTask = uploadBytesResumable(imagesRef, file);
+
+      uploadTask.on("state_changed", {
+        complete: function () {
+          getMetadata(imagesRef).then((metadata) => {
+            const imageUrl = `https://firebasestorage.googleapis.com/v0/b/techshop-10c2d.appspot.com/o/image%2F${metadata.name}?alt=media`;
+            setImage(imageUrl);
+            console.log(metadata);
+            setUploading(false);
+          });
         },
-      }
+      });
 
-      const { data } = await axios.post('/api/upload', formData, config)
-
-      setImage(data)
-      setUploading(false)
+ 
     } catch (error) {
-      console.error(error)
-      setUploading(false)
+      console.error(error);
+      setUploading(false);
     }
-  }
+  };
 
   return (
     <>
@@ -117,17 +125,17 @@ const ProductEditScreen = () => {
               onChange={(e) => setPrice(e.target.value)}
             ></Form.Control>
           </Form.Group>
-          <Form.Group controlId='image'>
-              <Form.Label>Image</Form.Label>
-              <Form.Control
-                type='text'
-                placeholder='Enter image url'
-                value={image}
-                onChange={(e) => setImage(e.target.value)}
-              ></Form.Control>
-                <Form.Control type="file" onChange={uploadFileHandler}/>
-              {uploading && <Loader />}
-            </Form.Group>
+          <Form.Group controlId="image">
+            <Form.Label>Image</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter image url"
+              value={image}
+              onChange={(e) => setImage(e.target.value)}
+            ></Form.Control>
+            <Form.Control type="file" onChange={uploadFileHandler} />
+            {uploading && <Loader />}
+          </Form.Group>
           <Form.Group controlId="brand">
             <Form.Label>Brand</Form.Label>
             <Form.Control
